@@ -4,9 +4,48 @@
 
 npx create-react-app 프로젝트명 --template typescript
 
+### Router
 리액트 라우터 설치
 
 npm install react-router-dom
+
+index에 `<BrowserRouter> </<BrowserRouter>`감싸기
+```
+<Routes>
+     <Route path="/경로" element={ <div></div> } />
+     <Route path="/경로" element={ <컴포넌트명/> } />
+</Routes>
+
+<Link to="/">홈</Link>
+<Link to="/detail">상세페이지</Link>
+```
+
+### useNavigate
+```
+const navigate = useNavigate();
+<button onClick={()=>{ navigate('/detail') }}>이동버튼</button>
+
+<Route path="*" element={ <div>없는페이지</div> } />	//*는 라우터 경로 제외한 모든 경로
+```
+
+### nested routes
+```
+<Route path="/about" element={ <About/> } >  
+  <Route path="member" element={ <div>멤버</div> } />	// /about/member로 접속시 <About> & <div>멤버</div> 을 보여줌 (About의 <Outlet/>이 있는 위치에)
+  <Route path="location" element={ <div>위치</div> } /> /about/member로 접속시 <About> & <div>위치</div> 을 보여줌 (About의 <Outlet/>이 있는 위치에)
+</Route>
+```
+
+:작명 하면 아무문자 파라미터 전송
+
+`<Route path="/detail/:작명" element={ <Detail shoes={shoes}/> }/>`
+
+해당 페이지에서
+```
+import { useParams } from 'react-router-dom'
+let {id} = useParams();
+으로 가져올수 있음
+```
 
 스타일 컴포넌트 설치
 
