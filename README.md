@@ -47,6 +47,27 @@ let {id} = useParams();
 으로 가져올수 있음
 ```
 
+### useEffect
+```
+useEffect(()=>{ 실행할코드 })	//재렌더링마다 코드를 실행가능합니다.
+useEffect(()=>{ 실행할코드 }, [])	//컴포넌트 mount시 (로드시) 1회만 실행가능합니다.
+useEffect(()=>{ //useEffect 안의 코드 실행 전에 항상 실행됩니다. 
+  return ()=>{
+    실행할코드
+  }
+})
+
+useEffect(()=>{ 	//컴포넌트 unmount시 1회 실행됩니다.
+  return ()=>{
+    실행할코드
+  }
+}, [])
+
+useEffect(()=>{ 	//state1이 변경될 때만 실행됩니다. 
+  실행할코드
+}, [state1])
+```
+
 스타일 컴포넌트 설치
 
 npm install styled-components
